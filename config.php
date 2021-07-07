@@ -5,9 +5,9 @@ return array(
     ],
     'database' => [
         'host' => 'localhost',
-        'dbname' => 'your_dbname_here',
-        'username' => 'your_username_here',
-        'password' => 'your_password_here'
+        'dbname' => '',
+        'username' => '',
+        'password' => ''
     ],
     'categories' => [
         'animals' => [

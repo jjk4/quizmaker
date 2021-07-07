@@ -43,7 +43,7 @@
                 }
                 if($_POST[$key . "_false"] == "on"){
                     echo "Falsch <input type=\"checkbox\" onclick=\"return false;\" checked>";
-                    if("on" == $value["answers"]["true"]){
+                    if("on" == $value["answers"]["false"]){
                         echo "<i class=\"fas fa-check-circle\"></i><br>";
                     } else {
                         echo "<i class=\"fas fa-times-circle\"></i><br>";

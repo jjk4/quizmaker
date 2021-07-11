@@ -2,10 +2,11 @@
     $site_name = "Auswertung";
     include("header.php");
     $quizid = $_POST["quizid"];
-    $result = mysqli_query($connection, "SELECT content FROM quizzes WHERE id='" . $quizid . "'");
-    $content = json_decode(mysqli_fetch_assoc($result)["content"], true);
-    echo "<h1>Quiz \"" . $content["quizname"] . "\" von \"" . $content["author"] . "\" - Auswertung</h1>";
-    foreach($content["questions"] as $key=>$value) {
+    $result = mysqli_query($connection, "SELECT * FROM quizzes WHERE id='" . $quizid . "'");
+    $data = mysqli_fetch_assoc($result);
+    $questions = json_decode($data["questions"], true);
+    echo "<h1>Quiz \"" . $data["quizname"] . "\" von \"" . $data["author"] . "\" - Auswertung</h1>";
+    foreach($questions as $key=>$value) {
         echo "<h2>". $value["name"] . "</h2>";
         $i = 0;
         switch($_POST[$key . "_type"]) { //Prüfen, um welche Frage es sich handelt

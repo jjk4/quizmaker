@@ -7,7 +7,13 @@
 <h1>Quiz erstellen</h1>
 <form action="submitquiz.php" method="post">
     Name des Quiz: <input name="quizname" type="text" style="width: 40%;"><br>
-    Autor (dein Name): <input name="author" type="text"><br>
+    <?php
+    if(isset($_SESSION['userid'])) {
+        echo "Autor: " . $_SESSION['username'] . "<input name=\"author\" type=\"hidden\" value=\"" . $_SESSION['username'] . "\"><br><br>";
+    } else {
+        echo "Autor: Logge dich jetzt ein, um deinen Namen im Quiz zu sehen!<input name=\"author\" type=\"hidden\" value=\"unknown\"><br>";
+    }
+    ?>
     Kategorien:<br>
     <?php
         foreach($config["categories"] as $name => $content) {

@@ -1,13 +1,13 @@
 <?php
 return array(
     'server' => [
-        'url' => 'https://jojokorpi.ddns.net/quizmaker',
+        'url' => 'https://your_url/quizmaker',
     ],
     'database' => [
         'host' => 'localhost',
-        'dbname' => '',
-        'username' => '',
-        'password' => ''
+        'dbname' => 'your_dbname_here',
+        'username' => 'your_user_here',
+        'password' => 'you_password_here'
     ],
     'categories' => [
         'animals' => [

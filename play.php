@@ -5,13 +5,14 @@
 <?php
     if ($_GET["q"]) { // Wenn ein Quiz angegeben wurde
         $quizid = $_GET["q"];
-        $result = mysqli_query($connection, "SELECT content FROM quizzes WHERE id='" . $quizid . "'");
-        $content = json_decode(mysqli_fetch_assoc($result)["content"], true);
+        $result = mysqli_query($connection, "SELECT * FROM quizzes WHERE id='" . $quizid . "'");
+        $data = mysqli_fetch_assoc($result);
+        $questions = json_decode($data["questions"], true);
         if (mysqli_num_rows($result) > 0) { //Quiz existiert
-            echo "<h1>Quiz \"" . $content["quizname"] . "\" von \"" . $content["author"] . "\"</h1>";
+            echo "<h1>Quiz \"" . $data["quizname"] . "\" von \"" . $data["author"] . "\"</h1>";
             echo "<form action=\"submitsolution.php\" method=\"post\">";
             echo "<input type=\"hidden\" name=\"quizid\" value=\"$quizid\">";
-            foreach($content["questions"] as $key=>$value) {
+            foreach($questions as $key=>$value) {
                 echo "<div class=\"question\">";
                 echo "<h2>". $value["name"] . "</h2>";
                 switch($value["type"]){

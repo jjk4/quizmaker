@@ -8,11 +8,11 @@
         $category = $_GET["category"];
         $sql = "SELECT * FROM quizzes WHERE categories LIKE '%" . $category . "%'";
         $result = mysqli_query($connection, $sql);
+        echo "<a href=\"category.php\"><i class=\"fas fa-chevron-left\"></i>Zurück</a><br><h3><ul>";
         if (mysqli_num_rows($result) > 0) {
-            echo "<a href=\"category.php\"><i class=\"fas fa-chevron-left\"></i>Zurück</a><br><h3><ul>";
             while($row = mysqli_fetch_assoc($result)) {
-                $content = json_decode(mysqli_fetch_assoc(mysqli_query($connection, "SELECT content FROM quizzes WHERE id='" . $row["ID"] . "'"))["content"], true);
-                echo "<li><a href=\"play.php?q=" . $row["ID"] . "\">" . $content["quizname"] . "</a></li>";
+                $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT quizname FROM quizzes WHERE id='" . $row["id"] . "'"));
+                echo "<li><a href=\"play.php?q=" . $row["id"] . "\">" . $data["quizname"] . "</a></li>";
             }
             echo "</ul></h3>";
         } else {

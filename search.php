@@ -6,10 +6,10 @@
     if ($_GET["search"]){
         $search = $_GET["search"];
         echo "<h2> Quizze, die \"$search\" enthalten: </h2>";
-        $result = mysqli_query($connection, "SELECT DISTINCT * FROM quizzes WHERE content LIKE '%" . $search . "%'");
+        $result = mysqli_query($connection, "SELECT * FROM `quizzes` WHERE `questions` LIKE '%" . $search . "%' OR `quizname` LIKE '%" . $search . "%' OR `author` LIKE '%" . $search . "%'");
         echo "<h3><ul>";
         while($row = mysqli_fetch_assoc($result)) {
-            echo "<li><a href=\"play.php?q=" . $row["ID"] . "\">" . json_decode($row["content"], true)["quizname"] . "</a></li>";
+            echo "<li><a href=\"play.php?q=" . $row["id"] . "\">" . $row["quizname"] . "</a></li>";
         }
         echo "</ul></h3>";
         echo "<h2> Weiteren Suchbegriff eingeben:</h2>";

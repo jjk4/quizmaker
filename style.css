@@ -121,3 +121,51 @@ input[type=submit]:hover {
 .fa-times-circle {
   color: #af3737;
 }
+/* -------------------------------------------- CSS für Accountsystem -------------------------------------------- */
+.accountbox{
+  background: burlywood;
+  border: 2px solid #c09761;
+  border-radius: 10px;
+  height: 70%;
+  width: 80%;
+}
+.accountmanagement{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.accountmenu{
+  background: #c48e48;
+  height: 100%;
+  width: 20%;
+  border: 2px solid #c09761;
+  border-radius: 10px;
+}
+.accountmenuitem{
+  font-size: 2em;
+  text-align: center;
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
+.accountmenuitem a{
+  text-decoration: none;
+}
+.accountmenuitem#selected{
+  font-size: 2em;
+  text-align: center;
+  margin-top: 7%;
+  margin-bottom: 7%;
+  border: 2px solid #e7b97c;
+  border-radius: 10px;
+  background: #ffffff3d
+}
+#myquizzes{
+  border-collapse: collapse;
+  font-size: 1.4em;
+  width: 100%;
+}
+#myquizzes tr{
+  border: 1px solid black;
+}

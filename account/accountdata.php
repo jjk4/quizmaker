@@ -1,5 +1,5 @@
 <?php
-    $site_name = "Account";
+    $site_name = "Meine Quizze";
     include("header.php");
 ?><br>
 <div class="accountmanagement">
@@ -7,14 +7,14 @@
         <tr>
             <?php include("menu.php") ?>
             <td valign="top" class="accountcontent">
-                <h1 style="text-align: center;">Übersicht - Mein Account</h1>
-                Hallo, <?php echo $_SESSION['username'];?>
+                <h1 style="text-align: center;">Accountdaten</h1>
+                
 </td>
         </tr>
 </table>
 </div>
 <script>
-    $('.index').attr('id', 'selected');
+    $('.accountdata').attr('id', 'selected');
 </script>
 <?php
     include("footer.php");

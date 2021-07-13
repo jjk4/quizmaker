@@ -6,3 +6,12 @@ Du kannst den Offiziellen Quizmaker Server unter [https://jojokorpi.ddns.net/qui
 Viel Spaß beim Quizzen!
 
 (Wer sich über die Deklination von "Quiz" streiten will: [hier](https://www.duden.de/rechtschreibung/Quiz#grammatik))
+
+## Aktuell in Planung sind:
+
+(sortiert von "wird es bald geben" bis "dauert noch")
+- Mehrere Designs (+ User können eigene Designs erstellen)
+- Kommentare für Quizze
+- Moderator-Rang, der Quizze bearbeiten und Kommentare löschen und bearbeiten kann
+- Adminbereich
+- Schätzfragen

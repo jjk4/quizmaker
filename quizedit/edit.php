@@ -15,6 +15,19 @@
                 <?php $i = 0; foreach($questions as $key=>$value) {$i++;}?>
                 <input name="numberofquestions" type="hidden" value="<?php echo $i;?>">
                 Name des Quiz: <input name="quizname" type="text" style="width: 40%;" value="<?php echo $data["quizname"];?>"><br>
+                Aussehen: <select id="styleselector" name="style">
+                            <?php 
+                                foreach($config["styles"] as $key=>$value){
+                                    echo "<option value=\"" . $key . "\"";
+                                    if($key ==$data["style"]){
+                                        echo "selected";
+                                    }
+                                    echo ">" . $value . "</option>";
+                                }
+                            ?>
+                        </select>    
+                
+                <br>
                 Autor: <?php echo $_SESSION["username"];?><br>
                 Kategorien:<br>
                 <?php
@@ -108,6 +121,12 @@
     
 ?><br>
 
+<script>
+    let sel_selector = document.getElementById('styleselector');
+    sel_selector.addEventListener ('change', function () {
+        document.getElementById("quizsheet").setAttribute("href", "../styles/" + this.value + ".css");
+    });
+</script>
 <?php
     include("footer.php");
 ?>

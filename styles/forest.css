@@ -1,0 +1,23 @@
+/* -------------------------------------------- Allgemeines CSS -------------------------------------------- */
+body{
+    font-family: Arial;
+    background-image: url("images/forest.webp");
+    background-attachment: fixed;
+    background-size: 100%;
+  }
+  /* -------------------------------------------- CSS für Fragen -------------------------------------------- */
+  .question{
+    background: rgb(86, 190, 65);
+    border: 2px solid #4b9941;
+    border-radius: 10px;
+  }
+  /* -------------------------------------------- CSS für Eingabeelemente -------------------------------------------- */
+
+  input[type=submit] {
+    background-color: #41ff51;
+    color: black;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #73ff50;
+  }

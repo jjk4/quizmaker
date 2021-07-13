@@ -1,13 +1,13 @@
 <?php
 return array(
     'server' => [
-        'url' => 'https://your_url/quizmaker',
+        'url' => 'https://jojokorpi.ddns.net/quizmaker',
     ],
     'database' => [
         'host' => 'localhost',
         'dbname' => 'your_dbname_here',
         'username' => 'your_user_here',
-        'password' => 'you_password_here'
+        'password' => 'your_password_here'
     ],
     'categories' => [
         'animals' => [
@@ -55,5 +55,15 @@ return array(
             'icon' => 'fas fa-microchip',
         ],
     ],
+    'styles' => [
+        'quizmaker_orange' => 'Quizmaker Orange',
+        'quizmaker_blue' => 'Blau',
+        'quizmaker_pink' => 'Pink',
+        'quizmaker_green' => 'Grün',
+        'quizmaker_yellow' => 'Gelb',
+        'quizmaker_red' => 'Rot',
+        'subsea' => 'Ozean',
+        'forest' => 'Wald',
+    ]
 );
 ?>

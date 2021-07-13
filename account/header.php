@@ -13,6 +13,12 @@
         <script src="https://kit.fontawesome.com/f54f800e80.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="../style.css">
+        <?php
+            if(isset($_GET["q"])){
+                $style = mysqli_fetch_assoc(mysqli_query($connection, "SELECT style FROM quizzes WHERE `id` = '" . $_GET["q"] . "'"))["style"];
+                echo "<link id=\"quizsheet\" rel=\"stylesheet\" href=\"../styles/" . $style . ".css\">";
+            }
+        ?>
     </head>
     <body>
         <div class="header">

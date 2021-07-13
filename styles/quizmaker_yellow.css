@@ -1,0 +1,21 @@
+/* -------------------------------------------- Allgemeines CSS -------------------------------------------- */
+body{
+    font-family: Arial;
+    background: #e9e5bd;
+  }
+  /* -------------------------------------------- CSS für Fragen -------------------------------------------- */
+  .question{
+    background: rgb(230, 209, 92);
+    border: 2px solid #c29500;
+    border-radius: 10px;
+  }
+  /* -------------------------------------------- CSS für Eingabeelemente -------------------------------------------- */
+
+  input[type=submit] {
+    background-color: #ffcc41;
+    color: black;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #ffd050;
+  }

@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //Wenn ein Formular gesendet wurde
         $author = "unknown";
     }
     $quizname = $_POST["quizname"];
+    $style = $_POST["style"];
     $questions = array();
     //Kategorien auslesen
     $categories = array();
@@ -75,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //Wenn ein Formular gesendet wurde
         }
         $questions[$i] = $questionarray;
     }
-    $sql = "INSERT INTO `quizzes` (`id`, `author`, `quizname`, `questions`, `categories`) VALUES ('" . $quizid . "', '" . $author . "', '" . $quizname . "', '" . json_encode($questions) . "', '" . json_encode($categories) . "');";
+    $sql = "INSERT INTO `quizzes` (`id`, `author`, `quizname`, `questions`, `categories`, `style`) VALUES ('" . $quizid . "', '" . $author . "', '" . $quizname . "', '" . json_encode($questions) . "', '" . json_encode($categories) . "', '" . $style . "');";
     if (mysqli_query($connection, $sql)) {
         echo "<br>Quiz wurde erfolgreich gespeichert! Du kannst das Quiz jetzt unter " . $config["server"]["url"] . "/play.php?q=" . $quizid;
         echo "<br> Deine Quizid ist: $quizid";

@@ -23,6 +23,8 @@
                                     </tr>
                                 ";
                             }
+                        } else {
+                            echo "Du besitzt keine Quizze!";
                         }
                     ?>
                 </table>

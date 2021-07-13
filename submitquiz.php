@@ -37,7 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //Wenn ein Formular gesendet wurde
 
     }
     //Grundlegendes auslesen
-    $author = $_POST["author"];
+    if(isset($_SESSION['userid'])) {
+        $author = $_SESSION['username'];
+    } else {
+        $author = "unknown";
+    }
     $quizname = $_POST["quizname"];
     $questions = array();
     //Kategorien auslesen

@@ -1,5 +1,5 @@
 <?php
-    $site_name = "Meine Quizze";
+    $site_name = "Benachrichtigungen";
     include("header.php");
     if(isset($_GET["del"])){
         $receiver = mysqli_fetch_assoc(mysqli_query($connection, "SELECT `receiver` FROM notifications WHERE `id` = '" . $_GET["del"] . "'"))["receiver"];// Empfänger der Nachricht abfragen
@@ -32,7 +32,9 @@
                                         <td><a href=\"?del=" . $row["id"] . "\"><i class=\"fas fa-times-circle\"></i></a></td>
                                     </tr>
                                 ";
-                            }
+                            } 
+                        } else {
+                            echo "Keine Benachrichtigungen!";
                         }
                     ?>
                 </table>

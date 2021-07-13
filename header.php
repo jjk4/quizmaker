@@ -27,7 +27,20 @@
                     if(!isset($_SESSION['userid'])) {
                         echo "<a href=\"login.php\"><i class=\"fas fa-user\"></i> Einloggen</a>";
                     } else {
-                        echo "<a href=\"account\"><i class=\"fas fa-user\"></i> Mein Account</a>";
+                        $rank = mysqli_fetch_assoc(mysqli_query($connection, "SELECT rank FROM users WHERE `username` = '" . $_SESSION["username"] . "'"))["rank"];// Rang des Nutzers abfragen
+                        $sql = "SELECT * FROM notifications WHERE `receiver` = '" . $_SESSION["username"] . "' OR `receiver` = 'group_" . $rank . "'";
+                        $result = mysqli_query($connection, $sql);
+                        if (mysqli_num_rows($result) > 0) { // Wenn es benachrichtigungen gibt
+                            echo "<a href=\"account\"><i class=\"fas fa-comment-dots\"></i> Mein Account</a>
+                            <script>
+                            function blink_text() {
+                                $('.fa-comment-dots').fadeOut(700);
+                                $('.fa-comment-dots').fadeIn(700);
+                            }
+                            setInterval(blink_text, 1400);</script>";
+                        } else {
+                            echo "<a href=\"account\"><i class=\"fas fa-user\"></i> Mein Account</a>";
+                        }
                     }
                 ?>
             </div>

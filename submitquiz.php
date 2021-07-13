@@ -1,15 +1,14 @@
  <?php
     $site_name = "Quiz erstellen";
     include("header.php");
-
 ?>
 <?php
 function get_ids($connection) {
     $ids = array();
-    $result = mysqli_query($connection, "SELECT ID FROM quizzes");
+    $result = mysqli_query($connection, "SELECT id FROM quizzes");
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
-            $ids[] = $row["ID"];
+            $ids[] = $row["id"];
         }
 
     }
@@ -29,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //Wenn ein Formular gesendet wurde
         }
         //prüfen, ob ID schon existiert
         $ids = get_ids($connection);
+        var_dump($ids);
         if (in_array($quizid, $ids)) {
             $idok = false;
         } else {

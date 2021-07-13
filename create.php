@@ -5,7 +5,7 @@
 <script src="create.js"></script>
 
 <h1>Quiz erstellen</h1>
-<form action="submitquiz.php" method="post">
+<form action="submitquiz.php" method="post" autocomplete="off">
     Name des Quiz: <input name="quizname" type="text" style="width: 40%;"><br>
     <?php
     if(isset($_SESSION['userid'])) {

@@ -169,3 +169,11 @@ input[type=submit]:hover {
 #myquizzes tr{
   border: 1px solid black;
 }
+#notifications{
+  border-collapse: collapse;
+  font-size: 1.4em;
+  width: 100%;
+}
+#notifications tr{
+  border: 1px solid black;
+}

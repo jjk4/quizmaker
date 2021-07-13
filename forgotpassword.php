@@ -7,7 +7,7 @@
         $sql = "SELECT * FROM users WHERE email = '" . $email . "'";
         $result = mysqli_query($connection, $sql);
         if (mysqli_num_rows($result) != 0) {
-            $sql = "INSERT INTO `notifications` (`type`, `content`) VALUES ('forgotpassword', '" . $email . "')";
+            $sql = "INSERT INTO `notifications` (`type`, `content`, `receiver`) VALUES ('forgotpassword', '" . $email . "', 'group_admin')";
             mysqli_query($connection, $sql);
         }
         echo "Wenn die Emailadresse schonmal registriert wurde, wurde jetzt der Admin benachrichtigt. Er wird sich um dein Problem kümmern. Dies kann mehrere Tage dauern.";

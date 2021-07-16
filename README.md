@@ -13,6 +13,7 @@ Viel Spaß beim Quizzen!
 - ~~Mehrere Designs~~ (+ User können eigene Designs erstellen)
 - ~~Kommentare für Quizze~~
 - Moderator-Rang, der Quizze bearbeiten ~~und Kommentare löschen und bearbeiten kann~~
-- Auswertungssystem mit Punkten
+- Bewertungssystem für Quizze
 - Adminbereich
+- Auswertungssystem mit Punkten
 - Schätzfragen

@@ -11,8 +11,8 @@ Viel Spaß beim Quizzen!
 
 (sortiert von "wird es bald geben" bis "dauert noch")
 - ~~Mehrere Designs~~ (+ User können eigene Designs erstellen)
-- ~~Kommentare für Quizze
-- Moderator-Rang, der Quizze bearbeiten ~~und Kommentare löschen und bearbeiten kann
+- ~~Kommentare für Quizze~~
+- Moderator-Rang, der Quizze bearbeiten ~~und Kommentare löschen und bearbeiten kann~~
 - Auswertungssystem mit Punkten
 - Adminbereich
 - Schätzfragen

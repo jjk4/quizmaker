@@ -10,9 +10,9 @@ Viel Spaß beim Quizzen!
 ## Aktuell in Planung sind:
 
 (sortiert von "wird es bald geben" bis "dauert noch")
-- Mehrere Designs (+ User können eigene Designs erstellen)
-- Kommentare für Quizze
-- Moderator-Rang, der Quizze bearbeiten und Kommentare löschen und bearbeiten kann
+- ~~Mehrere Designs~~ (+ User können eigene Designs erstellen)
+- ~~Kommentare für Quizze
+- Moderator-Rang, der Quizze bearbeiten ~~und Kommentare löschen und bearbeiten kann
 - Auswertungssystem mit Punkten
 - Adminbereich
 - Schätzfragen

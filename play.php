@@ -72,6 +72,11 @@
         <a href=\"code.php\">Code einzugeben</a>, ein <a href=\"search.php\">Quiz zu suchen</a> oder in einer <a href=\"category.php\">Kategorie zu suchen</a>.";
     }
 ?>
+<h2>Kommentare:</h2>
+
+<?php //Kommentare anzeigen
+    include("showcomments.php");
+?>
 
 <?php
     include("footer.php");

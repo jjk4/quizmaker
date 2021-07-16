@@ -24,6 +24,9 @@
                                     case "forgotpassword":
                                         $text = $row["content"] . " hätte gerne ein neues Passwort!";
                                         break;
+                                    case "reportcomment":
+                                        $text = "Gemeldeter Kommentar: " . $row["content"];
+                                        break;
                                 }
                                 echo "
                                     <tr>

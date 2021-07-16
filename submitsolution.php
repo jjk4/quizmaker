@@ -85,6 +85,9 @@
     }
 ?><br><br>
 <a href="play.php?q=<?php echo $quizid; ?>" class="button">Nochmal Spielen</a>
+<?php //Kommentare anzeigen
+    include("showcomments.php");
+?>
 <?php
     include("footer.php");
 ?>

@@ -3,7 +3,6 @@
     $quizid = $_GET["q"];
     $action = $_GET["a"];
     $commentid = $_GET["c"];
-    echo $action . $quizid . $commentid;
     if(isset($_SESSION["username"])){
         switch ($action) {
             case "like":
@@ -17,7 +16,6 @@
                 } else {
                     $new[] = $_SESSION["username"]; // Wenn das Quiz noch nicht geliket wurde, like hinzufügen
                 }
-                var_dump($new);
                 $sql = "UPDATE `comments` SET `likes` = '" . json_encode($new) . "' WHERE `comments`.`id` = " . $commentid;
                 mysqli_query($connection, $sql);
                 break;
@@ -32,7 +30,6 @@
                 } else {
                     $new[] = $_SESSION["username"]; // Wenn das Quiz noch nicht geliket wurde, like hinzufügen
                 }
-                var_dump($new);
                 $sql = "UPDATE `comments` SET `dislikes` = '" . json_encode($new) . "' WHERE `comments`.`id` = " . $commentid;
                 mysqli_query($connection, $sql);
                 break;
@@ -70,7 +67,9 @@
                     }
                 }
                 break;
-        }
+        } 
+        header("Location: play.php?q=" . $quizid);
+    } else {
+        echo "<br>Du musst dich anmelden, um einen Kommentar zu liken/disliken/melden";
     }
-    header("Location: play.php?q=" . $quizid);
 ?>

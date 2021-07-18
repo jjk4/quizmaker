@@ -28,6 +28,9 @@
                                     case "reportcomment":
                                         $text = "Gemeldeter Kommentar: " . $row["content"];
                                         break;
+                                    case "reportquiz":
+                                        $text = "Gemeldetes Quiz: " . $row["content"];
+                                        break;
                                 }
                                 echo "
                                     <tr>

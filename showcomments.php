@@ -1,7 +1,7 @@
 <?php
     if(isset($_SESSION['username'])){
 ?>
-<form method="POST">
+<form method="POST" autocomplete="off">
     <h4>Kommentar schreiben:</h4>
     <input type="text" name="comment">
     <input type="submit">
@@ -83,7 +83,7 @@
 <script>
     function edit(c){
         var content = $("#comment" + c).text();
-        var form = "<form method=\"POST\" action=\"comment.php?a=edit&q=<?php echo $quizid;?>&c=" + c + "\"><input type=\"text\" name=\"comment\" value=\"" + content + "\"><input type=\"submit\"></form>";
+        var form = "<form method=\"POST\" action=\"comment.php?a=edit&q=<?php echo $quizid;?>&c=" + c + "\" autocomplete=\"off\"><input type=\"text\" name=\"comment\" value=\"" + content + "\"><input type=\"submit\"></form>";
         $("#comment" + c).html(form);
     }
 </script>

@@ -9,7 +9,59 @@
         $data = mysqli_fetch_assoc($result);
         $questions = json_decode($data["questions"], true);
         if (mysqli_num_rows($result) > 0) { //Quiz existiert
-            echo "<h1>Quiz \"" . $data["quizname"] . "\" von \"" . $data["author"] . "\"</h1><span class=\"time\">" . $data["created"] . "</span>";
+            // Likes auswerten
+            $likes = json_decode($data["likes"], true);
+            $i = 0;
+            foreach($likes as $key=>$value){
+                $i++;
+            }
+            $numberoflikes = $i;
+            // Dislikes auswerten
+            $dislikes = json_decode($data["dislikes"], true);
+            $i = 0;
+            foreach($dislikes as $key=>$value){
+                $i++;
+            }
+            $numberofdislikes = $i;
+            echo "<h1>Quiz \"" . $data["quizname"] . "\" von \"" . $data["author"] . "\"</h1><span class=\"time\">" . $data["created"] . "</span><br>";
+            //Quiz liken
+            echo "<a href=\"quizaction.php?a=like&q=$quizid\"><i class=\"fas fa-thumbs-up\" style=\"color: ";
+            if(in_array($_SESSION["username"], $likes)){
+                echo "green";
+            } else {
+                echo "black";
+            }
+            echo ";\"></i></a> "; 
+            echo "(" . $numberoflikes . ")";
+            //Quiz disliken
+            echo "<a href=\"quizaction.php?a=dislike&q=$quizid\"><i class=\"fas fa-thumbs-down\" style=\"color: ";
+            if(in_array($_SESSION["username"], $dislikes)){
+                echo "green";
+            } else {
+                echo "black";
+            }
+            echo ";\"></i></a> "; 
+            echo "(" . $numberofdislikes . ")"; 
+            //Quiz melden
+            echo "<a href=\"quizaction.php?a=report&q=$quizid\"><i class=\"fas fa-flag\" style=\"color: red;\"></i></a> "; 
+            //Quiz löschen
+            if($data["author"] == $_SESSION["username"]){
+                echo "<a href=\"quizedit/delete.php?q=" . $quizid . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
+            } else {
+                // Prüfen, ob man Admin oder Mod ist
+                if($rank == "admin" or $rank == "mod"){
+                    echo "<a href=\"quizedit/delete.php?q=" . $quizid . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
+                }
+            }
+            //Quiz bearbeiten
+            if($data["author"] == $_SESSION["username"]){
+                echo "<a href=\"quizedit/edit.php?q=" . $quizid . "\"><i class=\"fas fa-pencil-alt\" style=\"color: black;\"></i></a> "; 
+            } else {
+                // Prüfen, ob man Admin oder Mod ist
+                if($rank == "admin" or $rank == "mod"){
+                    echo "<a href=\"quizedit/edit.php?q=" . $quizid . "\"><i class=\"fas fa-pencil-alt\" style=\"color: black;\"></i></a> "; 
+                }
+            }
             echo "<form action=\"submitsolution.php\" method=\"post\">";
             echo "<input type=\"hidden\" name=\"quizid\" value=\"$quizid\">";
             foreach($questions as $key=>$value) {

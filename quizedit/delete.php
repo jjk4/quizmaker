@@ -6,9 +6,10 @@
         $quizid = $_GET["q"];
         $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM quizzes WHERE `id` = '" . $quizid . "'"));
         $authorofquiz = $data["author"];
-        if($authorofquiz == $_SESSION["username"]){ // Wenn das Quiz einem auch gehört
+        if($authorofquiz == $_SESSION["username"] or $rank == "admin"){ // Wenn das Quiz einem auch gehört
             if(isset($_GET["y"])){ //Wenn schon das OK zum löschen gegeben wurde, dass löschen
                 mysqli_query($connection, "DELETE FROM `quizzes` WHERE `id` = '" . $quizid . "'");
+                mysqli_query($connection, "DELETE FROM `comments` WHERE `quizid` = '" . $quizid . "'");
                 echo "Das Quiz wurde gelöscht!";
             } else {
             ?>

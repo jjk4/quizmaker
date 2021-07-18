@@ -1,6 +1,7 @@
 <?php
     $site_name = "Account";
     include("header.php");
+    if(isset($_SESSION["username"])){
 ?><br>
 <div class="accountmanagement">
     <table class="accountbox">
@@ -18,5 +19,8 @@
     $('.index').attr('id', 'selected');
 </script>
 <?php
+    } else {
+        echo "Du hast keinen Zugriff auf diese Seite";
+    }
     include("footer.php");
 ?>

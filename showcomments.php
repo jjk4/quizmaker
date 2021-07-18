@@ -35,8 +35,8 @@
             }
             $numberofdislikes = $i;
             //Kommentare anzeigen
-            //Kommentar liken
             echo "<b>" . $row["author"] . "</b>";
+            //Kommentar liken
             echo "<a href=\"comment.php?a=like&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-thumbs-up\" style=\"color: ";
             if(in_array($_SESSION["username"], $likes)){
                 echo "green";
@@ -55,25 +55,26 @@
             echo ";\"></i></a> "; 
             echo "(" . $numberofdislikes . ")"; 
             //Kommentar melden
-            echo "<a href=\"comment.php?a=report&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-flag\" style=\"color: red;\"></i></a> "; //Kommentar melden
+            echo "<a href=\"comment.php?a=report&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-flag\" style=\"color: red;\"></i></a> "; 
             //Kommentar löschen
             if($row["author"] == $_SESSION["username"]){
-                echo "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; //Kommentar löschen
+                echo "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
             } else {
                 // Prüfen, ob man Admin oder Mod ist
                 if($rank == "admin" or $rank == "mod"){
-                    echo "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; //Kommentar löschen
+                    echo "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
                 }
             }
             //Kommentar bearbeiten
             if($row["author"] == $_SESSION["username"]){
-                echo "<span onclick=\"edit(" . $row["id"] . ")\" style=\"cursor: pointer;\"><i class=\"fas fa-pencil-alt\"></i></span>"; //Kommentar löschen
+                echo "<span onclick=\"edit(" . $row["id"] . ")\" style=\"cursor: pointer;\"><i class=\"fas fa-pencil-alt\"></i></span>"; 
             } else {
                 // Prüfen, ob man Admin oder Mod ist
                 if($rank == "admin" or $rank == "mod"){
-                    echo "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; //Kommentar löschen
+                    echo "<span onclick=\"edit(" . $row["id"] . ")\" style=\"cursor: pointer;\"><i class=\"fas fa-pencil-alt\"></i></span>"; 
                 }
             }
+            echo "<br><span class=\"time\">" . $row["created"] . "</span>";
             echo "<br><div id=\"comment"  . $row["id"]  . "\">" . $row["content"] . "</div><br><br>";
         }
     }

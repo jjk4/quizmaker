@@ -1,12 +1,13 @@
 <?php
     $site_name = "Benachrichtigungen";
     include("header.php");
-    if(isset($_GET["del"])){
-        $receiver = mysqli_fetch_assoc(mysqli_query($connection, "SELECT `receiver` FROM notifications WHERE `id` = '" . $_GET["del"] . "'"))["receiver"];// Empfänger der Nachricht abfragen
-        if($receiver == $_SESSION["username"] or $receiver == "group_" . $rank){
-            mysqli_query($connection, "DELETE FROM `notifications` WHERE `id` = '" . $_GET["del"] . "'");
+    if(isset($_SESSION["username"])){
+        if(isset($_GET["del"])){
+            $receiver = mysqli_fetch_assoc(mysqli_query($connection, "SELECT `receiver` FROM notifications WHERE `id` = '" . $_GET["del"] . "'"))["receiver"];// Empfänger der Nachricht abfragen
+            if($receiver == $_SESSION["username"] or $receiver == "group_" . $rank){
+                mysqli_query($connection, "DELETE FROM `notifications` WHERE `id` = '" . $_GET["del"] . "'");
+            }
         }
-    }
 ?><br>
 <div class="accountmanagement">
     <table class="accountbox">
@@ -50,5 +51,8 @@
     $('.notifications').attr('id', 'selected');
 </script>
 <?php
+    } else {
+        echo "Du hast keinen Zugriff auf diese Seite";
+    }
     include("footer.php");
 ?>

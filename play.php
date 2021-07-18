@@ -9,7 +9,7 @@
         $data = mysqli_fetch_assoc($result);
         $questions = json_decode($data["questions"], true);
         if (mysqli_num_rows($result) > 0) { //Quiz existiert
-            echo "<h1>Quiz \"" . $data["quizname"] . "\" von \"" . $data["author"] . "\"</h1>";
+            echo "<h1>Quiz \"" . $data["quizname"] . "\" von \"" . $data["author"] . "\"</h1><span class=\"time\">" . $data["created"] . "</span>";
             echo "<form action=\"submitsolution.php\" method=\"post\">";
             echo "<input type=\"hidden\" name=\"quizid\" value=\"$quizid\">";
             foreach($questions as $key=>$value) {

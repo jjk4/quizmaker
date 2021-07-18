@@ -6,6 +6,9 @@ body{
 a{
   color: #2d3fc4;
 }
+.time{
+  font-size: 0.8em;
+}
 /* -------------------------------------------- CSS für Fragen -------------------------------------------- */
 .question{
   background: burlywood;

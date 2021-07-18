@@ -7,9 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //Wenn ein Formular gesendet wurde
     $quizid = $_POST["quizid"];
     $data = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM quizzes WHERE `id` = '" . $quizid . "'"));
     $authorofquiz = $data["author"];
-    if($authorofquiz == $_SESSION["username"]){ // Wenn das Quiz einem auch gehört
+    if($authorofquiz == $_SESSION["username"] or $rank = "admin"){ // Wenn das Quiz einem auch gehört
         //Grundlegendes auslesen
-        $author = $_SESSION['username'];
+        $author = $authorofquiz;
         $quizname = $_POST["quizname"];
         $style = $_POST["style"];
         $questions = array();

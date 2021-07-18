@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //Wenn ein Formular gesendet wurde
         }
         //prüfen, ob ID schon existiert
         $ids = get_ids($connection);
-        var_dump($ids);
         if (in_array($quizid, $ids)) {
             $idok = false;
         } else {

@@ -8,7 +8,7 @@
         $authorofquiz = $data["author"];
         $questions = json_decode($data["questions"], true);
         $categories = json_decode($data["categories"], true);
-        if($authorofquiz == $_SESSION["username"]){ // Wenn das Quiz einem auch gehört
+        if($authorofquiz == $_SESSION["username"] or $rank == "admin"){ // Wenn das Quiz einem auch gehört
             ?>
             <form action="submitquiz.php" method="post" autocomplete="off">
                 <input name="quizid" type="hidden" value="<?php echo $quizid;?>">
@@ -28,7 +28,7 @@
                         </select>    
                 
                 <br>
-                Autor: <?php echo $_SESSION["username"];?><br>
+                Autor: <?php echo $authorofquiz;?><br>
                 Kategorien:<br>
                 <?php
                     foreach($config["categories"] as $name => $content) {

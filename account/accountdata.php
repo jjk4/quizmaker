@@ -2,6 +2,7 @@
     $site_name = "Accountdaten";
     include("header.php");
     $accountdata = mysqli_fetch_assoc(mysqli_query($connection, "SELECT * FROM users WHERE `username` = '" . $_SESSION["username"] . "'"));
+    if(isset($_SESSION["username"])){
 ?><br>
 <div class="accountmanagement">
     <table class="accountbox">
@@ -52,5 +53,8 @@
     $('.accountdata').attr('id', 'selected');
 </script>
 <?php
+    } else {
+        echo "Du hast keinen Zugriff auf diese Seite";
+    }
     include("footer.php");
 ?>

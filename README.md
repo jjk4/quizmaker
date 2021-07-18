@@ -11,7 +11,7 @@ Viel Spaß beim Quizzen!
 
 (sortiert von "wird es bald geben" bis "dauert noch")
 
-- Bewertungssystem für Quizze mit Sternen
+- ~~Bewertungssystem für Quizze~~
 - Kommentare so sortieren, dass die Kommentare mit den meisten Likes oben stehen
 - Auswertungssystem mit Punkten
 - User können eigene Designs erstellen

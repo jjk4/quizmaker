@@ -16,7 +16,7 @@
                 } else {
                     $new[] = $_SESSION["username"]; // Wenn das Quiz noch nicht geliket wurde, like hinzufügen
                 }
-                $sql = "UPDATE `comments` SET `likes` = '" . json_encode($new) . "' WHERE `comments`.`id` = " . $commentid;
+                $sql = "UPDATE `comments` SET `likes` = '" . json_encode($new, JSON_UNESCAPED_UNICODE) . "' WHERE `comments`.`id` = " . $commentid;
                 mysqli_query($connection, $sql);
                 break;
             case "dislike":
@@ -30,7 +30,7 @@
                 } else {
                     $new[] = $_SESSION["username"]; // Wenn das Quiz noch nicht geliket wurde, like hinzufügen
                 }
-                $sql = "UPDATE `comments` SET `dislikes` = '" . json_encode($new) . "' WHERE `comments`.`id` = " . $commentid;
+                $sql = "UPDATE `comments` SET `dislikes` = '" . json_encode($new, JSON_UNESCAPED_UNICODE) . "' WHERE `comments`.`id` = " . $commentid;
                 mysqli_query($connection, $sql);
                 break;
             case "report":

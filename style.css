@@ -180,3 +180,11 @@ input[type=submit]:hover {
 #notifications tr{
   border: 1px solid black;
 }
+/* -------------------------------------------- CSS für Kommentare -------------------------------------------- */
+.comment{
+  background: #ffffffaf;
+  margin-top: 3px;
+  padding: 6px;
+  border: 2px solid #797979af;
+  border-radius: 10px;
+}

@@ -19,7 +19,11 @@
     $sql = "SELECT * FROM comments WHERE `quizid` = '" . $quizid . "'";
     $result = mysqli_query($connection, $sql);
     if (mysqli_num_rows($result) > 0) {
+        $comments = array();
+        $likes = array();
         while($row = mysqli_fetch_assoc($result)) {
+            $commentstring = "";
+            $commentstring .= "<div class=\"comment\">";
             // Likes auswerten
             $likes = json_decode($row["likes"], true);
             $i = 0;
@@ -35,47 +39,56 @@
             }
             $numberofdislikes = $i;
             //Kommentare anzeigen
-            echo "<b>" . $row["author"] . "</b>";
+            $commentstring .= "<b>" . $row["author"] . "</b>";
             //Kommentar liken
-            echo "<a href=\"comment.php?a=like&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-thumbs-up\" style=\"color: ";
+            $commentstring .= "<a href=\"comment.php?a=like&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-thumbs-up\" style=\"color: ";
             if(in_array($_SESSION["username"], $likes)){
-                echo "green";
+                $commentstring .= "green";
             } else {
-                echo "black";
+                $commentstring .= "black";
             }
-            echo ";\"></i></a> "; 
-            echo "(" . $numberoflikes . ")";
+            $commentstring .= ";\"></i></a> "; 
+            $commentstring .= "(" . $numberoflikes . ")";
             //Kommentar disliken
-            echo "<a href=\"comment.php?a=dislike&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-thumbs-down\" style=\"color: ";
+            $commentstring .= "<a href=\"comment.php?a=dislike&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-thumbs-down\" style=\"color: ";
             if(in_array($_SESSION["username"], $dislikes)){
-                echo "green";
+                $commentstring .= "green";
             } else {
-                echo "black";
+                $commentstring .= "black";
             }
-            echo ";\"></i></a> "; 
-            echo "(" . $numberofdislikes . ")"; 
+            $commentstring .= ";\"></i></a> "; 
+            $commentstring .= "(" . $numberofdislikes . ")"; 
             //Kommentar melden
-            echo "<a href=\"comment.php?a=report&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-flag\" style=\"color: red;\"></i></a> "; 
+            $commentstring .= "<a href=\"comment.php?a=report&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-flag\" style=\"color: red;\"></i></a> "; 
             //Kommentar löschen
             if($row["author"] == $_SESSION["username"]){
-                echo "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
+                $commentstring .= "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
             } else {
                 // Prüfen, ob man Admin oder Mod ist
                 if($rank == "admin" or $rank == "mod"){
-                    echo "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
+                    $commentstring .= "<a href=\"comment.php?a=delete&q=$quizid&c=" . $row["id"] . "\"><i class=\"fas fa-times-circle\" style=\"color: red;\"></i></a> "; 
                 }
             }
             //Kommentar bearbeiten
             if($row["author"] == $_SESSION["username"]){
-                echo "<span onclick=\"edit(" . $row["id"] . ")\" style=\"cursor: pointer;\"><i class=\"fas fa-pencil-alt\"></i></span>"; 
+                $commentstring .= "<span onclick=\"edit(" . $row["id"] . ")\" style=\"cursor: pointer;\"><i class=\"fas fa-pencil-alt\"></i></span>"; 
             } else {
                 // Prüfen, ob man Admin oder Mod ist
                 if($rank == "admin" or $rank == "mod"){
-                    echo "<span onclick=\"edit(" . $row["id"] . ")\" style=\"cursor: pointer;\"><i class=\"fas fa-pencil-alt\"></i></span>"; 
+                    $commentstring .= "<span onclick=\"edit(" . $row["id"] . ")\" style=\"cursor: pointer;\"><i class=\"fas fa-pencil-alt\"></i></span>"; 
                 }
             }
-            echo "<br><span class=\"time\">" . $row["created"] . "</span>";
-            echo "<br><div id=\"comment"  . $row["id"]  . "\">" . $row["content"] . "</div><br><br>";
+            $commentstring .= "<br><span class=\"time\">" . $row["created"] . "</span>";
+            $commentstring .= "<br><div id=\"comment"  . $row["id"]  . "\">" . $row["content"] . "</div><br><br>";
+            $commentstring .= "</div>";
+            $comments[$row["id"]] = $commentstring;
+            $likesforsorting[$row["id"]] = $numberoflikes-$numberofdislikes;
+            
+
+        }
+        arsort($likesforsorting);
+        foreach($likesforsorting as $key=>$value){
+            echo $comments[$key];
         }
     }
     

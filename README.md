@@ -11,6 +11,7 @@ Viel Spaß beim Quizzen!
 
 (sortiert von "wird es bald geben" bis "dauert noch")
 
-- Auswertungssystem mit Punkten
+- ~~Auswertungssystem mit Punkten~~
+- Öffentliches Profil mit Spielstatistik
 - User können eigene Designs erstellen
 - Schätzfragen
